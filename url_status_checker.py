@@ -3,6 +3,10 @@ import argparse
 import asyncio
 from tqdm import tqdm
 import time
+from colorama import Fore, Style
+
+# Inisialisasi Colorama
+Fore.BLUE, Fore.RED, Fore.GREEN, Fore.YELLOW, Fore.WHITE, Style.RESET_ALL
 
 async def check_url_status(session, url, timeout=100, verbose=False, pbar=None):
     try:
@@ -11,32 +15,32 @@ async def check_url_status(session, url, timeout=100, verbose=False, pbar=None):
             if verbose:
                 print(f"Checked {url}: Status Code {status_code}")
             if pbar:
-                pbar.update(1)  # Pembaruan loading bar
+                pbar.update(1)
             return status_code
     except aiohttp.ClientError as e:
         if verbose:
             print(f"Error checking {url}: {e}")
         if pbar:
-            pbar.update(1)  # Pembaruan loading bar
-        return 500  # Mengembalikan kode status server error (500) jika terjadi error
+            pbar.update(1)
+        return 500
     except asyncio.TimeoutError:
         if verbose:
             print(f"Timeout checking {url}")
         if pbar:
-            pbar.update(1)  # Pembaruan loading bar
-        return 408  # Mengembalikan kode status request timeout (408) jika terjadi timeout
+            pbar.update(1)
+        return 408
 
 def get_response_description(status_code):
     if 100 <= status_code < 200:
-        return "(Informational)"
+        return f"{Fore.BLUE}(Informational){Style.RESET_ALL}"
     elif 200 <= status_code < 300:
-        return "(Successful)"
+        return f"{Fore.GREEN}(Successful){Style.RESET_ALL}"
     elif 300 <= status_code < 400:
-        return "(Redirection)"
+        return f"{Fore.YELLOW}(Redirection){Style.RESET_ALL}"
     elif 400 <= status_code < 500:
-        return "(Client Error)"
+        return f"{Fore.RED}(Client Error){Style.RESET_ALL}"
     elif 500 <= status_code < 600:
-        return "(Server Error)"
+        return f"{Fore.RED}(Server Error){Style.RESET_ALL}"
     else:
         return "Unknown"
 
@@ -61,7 +65,7 @@ async def main():
 
     if args.file:
         with open(args.file, 'r') as file:
-            lines = [line.strip() for line in file.readlines() if line.strip()]  # Hanya ambil baris yang bukan kosong
+            lines = [line.strip() for line in file.readlines() if line.strip()]
     else:
         lines = args.urls
 
@@ -81,16 +85,16 @@ async def main():
             for url, status in zip(lines, responses):
                 if not args.response_codes or status in args.response_codes:
                     description = get_response_description(status)
-                    url_statuses[url] = f"{status} {description}"
+                    url_statuses[url] = f"[{Fore.BLUE}{time.strftime('%Y-%m-%d %H:%M:%S')}{Style.RESET_ALL} | {status} {description}] {url}"
 
     if args.output:
         with open(args.output, 'w') as output_file:
             for url, status in url_statuses.items():
-                output_file.write(f"{url}: {status}\n")
+                output_file.write(f"{status}\n")
         print(f"Status responses of URLs have been saved in the file '{args.output}'.")
     else:
         for url, status in url_statuses.items():
-            print(f"{url}: {status}")
+            print(status)
 
 if __name__ == "__main__":
     asyncio.run(main())
