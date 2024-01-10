@@ -32,15 +32,15 @@ async def check_url_status(session, url, timeout=100, verbose=False, pbar=None):
 
 def get_response_description(status_code):
     if 100 <= status_code < 200:
-        return f"{Fore.BLUE}(Informational){Style.RESET_ALL}"
+        return f"{Fore.BLUE} Informational{Style.RESET_ALL}"
     elif 200 <= status_code < 300:
-        return f"{Fore.GREEN}(Successful){Style.RESET_ALL}"
+        return f"{Fore.GREEN} Successful{Style.RESET_ALL}"
     elif 300 <= status_code < 400:
-        return f"{Fore.YELLOW}(Redirection){Style.RESET_ALL}"
+        return f"{Fore.YELLOW} Redirection{Style.RESET_ALL}"
     elif 400 <= status_code < 500:
-        return f"{Fore.RED}(Client Error){Style.RESET_ALL}"
+        return f"{Fore.RED} Client Error {Style.RESET_ALL}"
     elif 500 <= status_code < 600:
-        return f"{Fore.RED}(Server Error){Style.RESET_ALL}"
+        return f"{Fore.RED} Server Error {Style.RESET_ALL}"
     else:
         return "Unknown"
 
@@ -85,7 +85,7 @@ async def main():
             for url, status in zip(lines, responses):
                 if not args.response_codes or status in args.response_codes:
                     description = get_response_description(status)
-                    url_statuses[url] = f"[{Fore.CYAN}{time.strftime('%Y-%m-%d %H:%M:%S')}{Style.RESET_ALL} | {status} {description}] {url}"
+                    url_statuses[url] = f"[{Fore.CYAN}{time.strftime('%Y-%m-%d %H:%M:%S')}{Style.RESET_ALL} | {status} | {description}] {url}"
 
     if args.output:
         with open(args.output, 'w') as output_file:
