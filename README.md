@@ -21,7 +21,7 @@ URL Status Checker adalah alat sederhana untuk memeriksa status respons dari sej
 - `-o, --output`: Nama file output untuk menyimpan hasil status respons.
 - `-r, --response-codes`: Kode respons yang ingin disertakan (dipisahkan spasi).
 - `-v, --verbose`: Mode verbose untuk mencetak informasi lebih lanjut.
-- `-ts, --time-sec`: Timeout dalam detik untuk setiap permintaan.
+- `-ts, --time-sec`: Timeout dalam detik untuk setiap permintaan, default nya 100 sec.
 
 ### Example Usage
 
