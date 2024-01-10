@@ -1,6 +1,6 @@
 # URL Status Checker
 
-URL Status Checker adalah alat sederhana untuk memeriksa status respons dari sejumlah URL. Alat ini memudahkan pengecekan status url ketika kita sedang melakukan proses bug hunting & Alat ini juga bisa di kombinasikan  untuk memeriksa semua list url yang telah di dapat dari Waybacksurls Tools([https://github.com/username/repo/blob/main/documentation.md](https://www.geeksforgeeks.org/waybackurls-fetch-all-the-urls-that-the-wayback-machine-knows-about-for-a-domain)
+URL Status Checker adalah alat sederhana untuk memeriksa status respons dari sejumlah URL. Alat ini memudahkan pengecekan status url ketika kita sedang melakukan proses bug hunting & Alat ini juga bisa di kombinasikan  untuk memeriksa semua list url yang telah di dapat dari Waybacksurls Tools [https://github.com/username/repo/blob/main/documentation.md](https://www.geeksforgeeks.org/waybackurls-fetch-all-the-urls-that-the-wayback-machine-knows-about-for-a-domain).
  , memberikan kemampuan untuk memeriksa sejumlah URL dengan cepat.
 
 ## Instalasi
