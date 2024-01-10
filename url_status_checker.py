@@ -85,7 +85,7 @@ async def main():
             for url, status in zip(lines, responses):
                 if not args.response_codes or status in args.response_codes:
                     description = get_response_description(status)
-                    url_statuses[url] = f"[{Fore.BLUE}{time.strftime('%Y-%m-%d %H:%M:%S')}{Style.RESET_ALL} | {status} {description}] {url}"
+                    url_statuses[url] = f"[{Fore.CYAN}{time.strftime('%Y-%m-%d %H:%M:%S')}{Style.RESET_ALL} | {status} {description}] {url}"
 
     if args.output:
         with open(args.output, 'w') as output_file:
