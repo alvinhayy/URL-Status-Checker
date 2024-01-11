@@ -45,7 +45,8 @@ logo_ascii = f"""
                                                                                                     
                            45 1 33 33 1  12   31   51 34 32   31 75  1 44                                                 
 """
-
+#Function untuk memberikan status code pada URL
+# lalu menyimpan / menampilkan nya di output
 async def check_url_status(session, url, timeout=100, verbose=False, pbar=None):
     try:
         async with session.head(url, allow_redirects=True, timeout=timeout) as response:
@@ -67,7 +68,9 @@ async def check_url_status(session, url, timeout=100, verbose=False, pbar=None):
         if pbar:
             pbar.update(1)
         return 408
-
+      
+#Function untuk memberikan status code pada URL
+# lalu menyimpan / menampilkan nya di output
 def get_response_description(status_code):
     if 100 <= status_code < 200:
         return f"{Fore.BLUE}  Informational{Style.RESET_ALL}"
@@ -140,7 +143,7 @@ async def main():
         for url, status in url_statuses.items():
             print(status)
 
-    # Informasi Tanggal dan Waktu Tools Sedang Running
+    # Informasi Tanggal dan Waktu Tools Selesai Running
     print(f"\n{Fore.LIGHTCYAN_EX}The URL checking process has been completed on | {time.strftime('%Y-%m-%d %H:%M:%S')}{Style.RESET_ALL}")
 
 if __name__ == "__main__":
