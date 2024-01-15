@@ -44,7 +44,7 @@ URL Status Checker adalah alat sederhana untuk memeriksa status respons dari sej
     ```
 
 ## Catatan
-
+- Gunakan Extension Tools jika ingin lebih mudah mengumpulkan URL Dari Waybackurls
 - Pastikan untuk memasang dependensi yang diperlukan dengan menjalankan perintah instalasi di atas.
-- Gunakan opsi `-h` atau `--help` untuk mendapatkan bantuan terkait penggunaan.
+- Gunakan opsi `-h` atau `--help` untuk mendapatkan bantuan terkait penggunaan semua tools yang ada.
 
