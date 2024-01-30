@@ -14,7 +14,7 @@ URL Status Checker adalah alat sederhana untuk memeriksa status respons dari sej
     ```
 
 ## Usage
-
+<a href="https://asciinema.org/a/MekV2e0aYh7uhY0zX5g3LPOyW" target="_blank"><img src="https://asciinema.org/a/MekV2e0aYh7uhY0zX5g3LPOyW.svg" /></a>
 ### Options
 - `-f, --file`: Nama file input yang berisi daftar URL.
 - `-u, --urls`: Daftar URL (dipisahkan spasi) jika tidak menggunakan file.
