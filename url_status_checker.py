@@ -4,6 +4,7 @@ import asyncio
 from tqdm import tqdm
 import time
 from colorama import Fore, Style
+import webbrowser
 
 # Inisialisasi Colorama
 Fore.CYAN, Fore.RED, Fore.GREEN, Fore.YELLOW, Fore.LIGHTCYAN_EX, Fore.WHITE, Style.RESET_ALL
@@ -104,6 +105,7 @@ async def main():
     parser.add_argument('-r', '--response-codes', nargs='+', type=int, help='Response codes to include (space-separated)')
     parser.add_argument('-v', '--verbose', action='store_true', help='Enable verbose mode')
     parser.add_argument('-ts', '--time-sec', type=int, default=100, help='Timeout in seconds for each request')
+    parser.add_argument('-t', '--tabs', type=int, default=1, help='Number of tabs to open in web browser')
 
     args = parser.parse_args()
 
@@ -146,7 +148,26 @@ async def main():
         print(f"\nStatus responses of URLs have been saved in the file '{args.output}'.")
     else:
         for url, status in url_statuses.items():
-            print(status)
+            print(status)        
+    
+    # open tabs in web browser sesuai dengan jumlah argumen -t
+    num_tabs = args.tabs
+    current_tab = 0
+    len_url_statuses = len(url_statuses)
+    if args.tabs > 0:
+        for url in url_statuses.keys():
+            if current_tab < len_url_statuses:
+                webbrowser.open_new_tab(url)
+                current_tab += 1
+                
+                if current_tab == num_tabs:
+                    input(f"\n{Fore.LIGHTCYAN_EX}Press Enter to continue...{Style.RESET_ALL}")
+                    num_tabs += args.tabs
+            else:
+                break
+            
+            
+
 
     # Informasi Tanggal dan Waktu Tools Selesai Running
     print(f"\n{Fore.LIGHTCYAN_EX}The URL checking process has been completed on | {time.strftime('%Y-%m-%d %H:%M:%S')}{Style.RESET_ALL}")

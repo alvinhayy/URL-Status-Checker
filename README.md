@@ -22,6 +22,7 @@ URL Status Checker adalah alat sederhana untuk memeriksa status respons dari sej
 - `-r, --response-codes`: Kode respons yang ingin disertakan (dipisahkan spasi).
 - `-v, --verbose`: Mode verbose untuk mencetak informasi lebih lanjut.
 - `-ts, --time-sec`: Timeout dalam detik untuk setiap permintaan, default nya 100 sec.
+- `-t, --tabs`: Buka setiap URL dalam tab baru di browser default.
 
 ### Example Usage
 
@@ -43,8 +44,20 @@ URL Status Checker adalah alat sederhana untuk memeriksa status respons dari sej
     python url_status_checker.py --help
     ```
 
+4. Contoh penggunaan dengan new tabs
+    
+        ```bash
+        python url_status_checker.py -f urls.txt -o output.txt -r 200 -t 5
+
 ## Catatan
 - Gunakan Extension Tools jika ingin lebih mudah mengumpulkan URL Dari Waybackurls
 - Pastikan untuk memasang dependensi yang diperlukan dengan menjalankan perintah instalasi di atas.
 - Gunakan opsi `-h` atau `--help` untuk mendapatkan bantuan terkait penggunaan semua tools yang ada.
+
+## Update
+[open in new tab browser]
+- Menambahkan opsi `-t` atau `--tabs` untuk membuka setiap URL dalam tab baru di browser default. 
+
+## Kontribusi
+- Github: [@prad-alpukat](https://github.com/prad-alpukat)
 
