@@ -46,8 +46,8 @@ URL Status Checker adalah alat sederhana untuk memeriksa status respons dari sej
 
 4. Contoh penggunaan dengan new tabs
     
-        ```bash
-        python url_status_checker.py -f urls.txt -o output.txt -r 200 -t 5
+   ```bash
+   python url_status_checker.py -f urls.txt -o output.txt -r 200 -t 5
 
 ## Catatan
 - Gunakan Extension Tools jika ingin lebih mudah mengumpulkan URL Dari Waybackurls
